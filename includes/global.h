@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 10:26:38 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/03/03 14:54:31 by qfremeau         ###   ########.fr       */
+/*   Updated: 2017/03/10 14:36:27 by vafanass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 # define MENU_RX		300
 # define MINWIN_RX		1400
 # define MINWIN_RY		900
-# define WIN_RX			1400
-# define WIN_RY			900
-# define MAXWIN_RX		2200
+# define MAXWIN_RX		1920
 # define MAXWIN_RY		1200
+# define WIN_RX			rt->rx
+# define WIN_RY			rt->ry
 # define LOAD_NAME		"image/Loader.bmp"
 # define LOAD_RX		900
 # define LOAD_RY		563
@@ -66,8 +66,8 @@
 # define OBJ_CYLINDER	0x40
 # define OBJ_SKYBOX		0x80
 
-# define SKYBX_NONE		0x0
-# define SKYBX_GRADIENT	0x1
+# define SKYBX_NONE		0x1
+# define SKYBX_GRADIENT	0x2
 
 # define NULL_PARAM		0.0
 # define NULL_RECT		(SDL_Rect){0,0,0,0}
@@ -78,50 +78,50 @@
 # define MAT_DIELECT	0x4
 # define MAT_DIFF_LIGHT	0x8
 
-# define FILE_DEF		"<!DOCTYPE scn-rt>"
-# define NB_BALISE		22
+# define FILE_DEF		"<?DOCTYPE scn-rt?>"
 
 # define BO_CAM			"<camera>"
-# define BC_CAM			"</camera>"
 # define BO_FOV			"<fov>"
-# define BC_FOV			"</fov>"
 # define BO_TARGET		"<target>"
-# define BC_TARGET		"</target>"
 # define BO_APERT		"<aperture>"
-# define BC_APERT		"</aperture>"
 # define BO_OBJ			"<obj>"
-# define BC_OBJ			"</obj>"
 # define BO_SPHERE		"<sphere>"
-# define BC_SPHERE		"</sphere>"
 # define BO_PLANE		"<plane>"
-# define BC_PLANE		"</plane>"
 # define BO_CYLINDER	"<cylinder>"
-# define BC_CYLINDER	"</cylinder>"
 # define BO_CONE		"<cone>"
-# define BC_CONE		"</cone>"
 # define BO_RADIUS		"<radius>"
-# define BC_RADIUS		"</radius>"
 # define BO_POS			"<pos>"
-# define BC_POS			"</pos>"
 # define BO_ROTATE		"<rotate>"
-# define BC_ROTATE		"</rotate>"
 # define BO_LAMBERT		"<lambert>"
-# define BC_LAMBERT		"</lambert>"
 # define BO_METAL		"<metal>"
-# define BC_METAL		"</metal>"
 # define BO_DIELECT		"<dielectric>"
-# define BC_DIELECT		"</dielectric>"
 # define BO_DIFFLIGHT	"<difflight>"
-# define BC_DIFFLIGHT	"</difflight>"
 # define BO_COLOR		"<color>"
-# define BC_COLOR		"</color>"
 # define BO_PARAM		"<param>"
-# define BC_PARAM		"</param>"
 # define BO_SKYBOX		"<skybox>"
-# define BC_SKYBOX		"</skybox>"
 # define BO_GRADIENT	"<gradient>"
-# define BC_GRADIENT	"</gradient>"
 # define BO_NONE		"<none>"
+
+# define BC_CAM			"</camera>"
+# define BC_FOV			"</fov>"
+# define BC_TARGET		"</target>"
+# define BC_APERT		"</aperture>"
+# define BC_OBJ			"</obj>"
+# define BC_SPHERE		"</sphere>"
+# define BC_PLANE		"</plane>"
+# define BC_CYLINDER	"</cylinder>"
+# define BC_CONE		"</cone>"
+# define BC_RADIUS		"</radius>"
+# define BC_POS			"</pos>"
+# define BC_ROTATE		"</rotate>"
+# define BC_LAMBERT		"</lambert>"
+# define BC_METAL		"</metal>"
+# define BC_DIELECT		"</dielectric>"
+# define BC_DIFFLIGHT	"</difflight>"
+# define BC_COLOR		"</color>"
+# define BC_PARAM		"</param>"
+# define BC_SKYBOX		"</skybox>"
+# define BC_GRADIENT	"</gradient>"
 # define BC_NONE		"</none>"
 
 # define BYTE_CAM		((UINT)1 << 0)

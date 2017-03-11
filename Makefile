@@ -22,7 +22,7 @@ PRECOMP =	stdafx.h
 DEFRULE =	all
 
 # Binary
-NAME =		rt
+NAME =		rtv1
 DST =		
 
 # Directories
@@ -83,8 +83,31 @@ SRC =		esdl/color.c\
 			interface/param_material.c\
 			interface/view.c\
 			parser/init.c\
+			parser/default.c\
 			parser/scene.c\
-			parser/xml.c\
+			parser/read_xml.c\
+			parser/check_xml_flag.c\
+			parser/check_xml.c\
+			parser/get.c\
+			parser/camera.c\
+			parser/skybox.c\
+			parser/sphere.c\
+			parser/plane.c\
+			parser/cylinder.c\
+			parser/cone.c\
+			parser/lambert.c\
+			parser/metal.c\
+			parser/difflight.c\
+			parser/bc_cam.c\
+			parser/bc_skybox.c\
+			parser/bc_sphere.c\
+			parser/bc_plane.c\
+			parser/bc_cylinder.c\
+			parser/bc_cone.c\
+			parser/bc_lambert.c\
+			parser/bc_metal.c\
+			parser/bc_difflight.c\
+			parser/temp.c\
 			raytracer/random.c\
 			raytracer/ray.c\
 			raytracer/render.c\
@@ -107,6 +130,8 @@ SRC =		esdl/color.c\
 			utils/utils.c\
 			utils/utils2.c\
 			utils/utils3.c\
+			utils/utils4.c\
+			utils/utils5.c\
 			main.c
 
 OBJ =		$(SRC:.c=.o)

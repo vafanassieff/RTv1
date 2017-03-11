@@ -6,17 +6,17 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 01:43:54 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/03/02 17:10:36 by qfremeau         ###   ########.fr       */
+/*   Updated: 2017/03/09 14:52:21 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_sphere	*new_sphere(t_vec3 center, const double radius)
+t_sphere	*new_sphere(const t_vec3 center, const double radius)
 {
 	t_sphere		*s;
 
-	s = malloc(sizeof(t_sphere));
+	s = (t_sphere*)malloc(sizeof(t_sphere));
 	s->center = center;
 	s->radius = radius;
 	s->radius2 = radius * radius;

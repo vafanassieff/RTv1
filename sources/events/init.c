@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 14:02:22 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/03/02 22:39:52 by qfremeau         ###   ########.fr       */
+/*   Updated: 2017/03/09 21:16:31 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void		init_multithread(t_rt *rt)
 		}
 	}
 	rt->limit_iter = ALIASING;
-	posix_memalign(&(rt->stack), PAGE_SIZE, STACK_SIZE);
 	rt->t = NULL;
 	i = 0;
 	while (i++ < rt->m_thread)

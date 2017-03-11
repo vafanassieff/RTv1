@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:35:06 by qfremeau          #+#    #+#             */
-/*   Updated: 2017/03/02 22:42:23 by qfremeau         ###   ########.fr       */
+/*   Updated: 2017/03/10 01:02:13 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct	s_skybox
 	t_vec3			color2;
 	t_vec3			(*hit)(const struct s_skybox*, const t_ray);
 	char			*name;
+	UCHAR			type;
 }				t_skybox;
 
 typedef struct	s_scene
@@ -208,7 +209,7 @@ typedef struct	s_button
 {
 	t_string			*string;
 	t_surface			*surface;
-	SDL_Rect			*rect;
+	SDL_Rect			rect;
 	BOOL				hover;
 	void				*param;
 	void				(*action)(void*);
@@ -303,14 +304,57 @@ typedef struct	s_iter
 ** Parser
 */
 
+enum			e_bytetab
+{
+	E_TAB_VOID = 0,
+	E_TAB_CAM,
+	E_TAB_OBJ,
+	E_TAB_SKYBOX,
+	E_TAB_FOV,
+	E_TAB_TARGET,
+	E_TAB_APERT,
+	E_TAB_SPHERE,
+	E_TAB_PLANE,
+	E_TAB_CYLINDER,
+	E_TAB_CONE,
+	E_TAB_RADIUS,
+	E_TAB_POS,
+	E_TAB_ROTATE,
+	E_TAB_LAMBERT,
+	E_TAB_METAL,
+	E_TAB_DIELECT,
+	E_TAB_DIFFLIGHT,
+	E_TAB_COLOR,
+	E_TAB_PARAM,
+	E_TAB_GRADIENT,
+	E_TAB_NONE,
+	E_TAB_LAST
+};
+
 typedef struct	s_parser
 {
-	int					is_close;
-	char				*bo[NB_BALISE];
-	char				*bc[NB_BALISE];
-	UINT				byte[NB_BALISE];
-	UINT				flag;
-	void				(*f)(t_scene*, char*);
+	int				l;
+	int				is_close;
+	char			**bo;
+	char			**bc;
+	UINT			*byte;
+	UINT			flag;
+	UINT			opt;
+	UINT			opt_m;
+	int				nb_balise;
+	void			(*f)(t_scene*, struct s_parser*, char*);
+	int				lim_obj;
+	int				lim_cam;
+	int				lim_skb;
+	int				lim_mat;
+	int				i_obj;
+	int				i_cam;
+	int				i_skb;
+	double			ratio;
+	int				grad;
+	int				mat;
+	int				obj;
+	int				same;
 }				t_parser;
 
 /*
@@ -328,6 +372,8 @@ typedef struct	s_rt
 	int				sizeof_scn;
 	t_scene			*this_scene;
 
+	int				rx;
+	int				ry;
 	SDL_Window		*win_temp;
 	SDL_Texture		*tx_load;
 	SDL_Rect		*r_view;
@@ -372,7 +418,6 @@ typedef struct	s_tharg
 typedef struct	s_thread
 {
 	pthread_t			thread;
-	pthread_attr_t		attr;
 	t_tharg				arg;
 	struct s_thread		*next;
 }				t_thread;
